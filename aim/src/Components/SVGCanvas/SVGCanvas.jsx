@@ -1,16 +1,22 @@
 import React from "react";
 import "./SVGCanvas.css";
 
-const generateValue = () => {
-  return Math.round(20 + Math.random() * 960);
-};
+function generateValue() {
+  function generateCX() {
+    return Math.round(10 + Math.random() * 900);
+  }
+  function generateCY() {
+    return Math.round(10 + Math.random() * 480);
+  }
+  return { generateCX, generateCY };
+}
 
 function SVGCanvas() {
   const [balls, setBalls] = React.useState(
     Array.from({ length: 50 }, (_el, index) => ({
       key: index++,
-      cx: generateValue(),
-      cy: generateValue(),
+      cx: generateValue().generateCX(),
+      cy: generateValue().generateCY(),
     }))
   );
 
