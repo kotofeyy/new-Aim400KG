@@ -1,0 +1,10 @@
+.wrapper {
+  width: 80%;
+}
+
+.wrapper__header {
+  background-color: aliceblue;
+  color: black;
+  padding: 2px 10px;
+  border-radius: 5px 5px 0px 0px;
+}
