@@ -5,12 +5,23 @@ import "./SVGCanvas.css";
 
 function SVGCanvas() {
   const [balls, setBalls] = React.useState(
-    Array.from({ length: 30 }, (_el, index) => ({
+    Array.from({ length: 1 }, (_el, index) => ({
       key: index++,
       cx: generateValue().generateCX(),
       cy: generateValue().generateCY(),
     }))
   );
+
+  React.useEffect(() => {
+    const intervalId = setInterval(() => {
+      balls.push({
+        key: generateValue().generateCX(),
+        cx: generateValue().generateCX(),
+        cy: generateValue().generateCY(),
+      });
+    }, 500);
+    return () => clearInterval(intervalId);
+  });
 
   const removeBall = (i) => {
     setBalls(balls.filter((item, j) => i !== j));
