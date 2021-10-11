@@ -1,26 +1,18 @@
 import React from "react";
+import generateValue from "../Utils/generateValue";
+import Ball from "./Ball";
 import "./SVGCanvas.css";
-
-function generateValue() {
-  function generateCX() {
-    return Math.round(10 + Math.random() * 900);
-  }
-  function generateCY() {
-    return Math.round(10 + Math.random() * 480);
-  }
-  return { generateCX, generateCY };
-}
 
 function SVGCanvas() {
   const [balls, setBalls] = React.useState(
-    Array.from({ length: 50 }, (_el, index) => ({
+    Array.from({ length: 30 }, (_el, index) => ({
       key: index++,
       cx: generateValue().generateCX(),
       cy: generateValue().generateCY(),
     }))
   );
 
-  const removeBalls = (i) => {
+  const removeBall = (i) => {
     setBalls(balls.filter((item, j) => i !== j));
   };
   return (
@@ -32,22 +24,21 @@ function SVGCanvas() {
       <g className="svg-canvas__console">
         {balls.map((item, i) => {
           return (
-            <text x="10" y={i * 7 + 10} fontSize="8px">
-              balls-{item.key}
+            <text key={i} x="10" y={i * 7 + 10} fontSize="8px">
+              ball-{item.key}
             </text>
           );
         })}
       </g>
       {balls?.map((item, i) => {
         return (
-          <>
-            <circle
-              cx={item.cx}
-              cy={item.cy}
-              r="10"
-              onClick={() => removeBalls(i)}
-            />
-          </>
+          <Ball
+            key={item.key}
+            cx={item.cx}
+            cy={item.cy}
+            index={i}
+            removeBall={() => removeBall(i)}
+          />
         );
       })}
     </svg>
