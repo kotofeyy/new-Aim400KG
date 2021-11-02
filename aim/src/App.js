@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Wrapper title="">
+        <Wrapper title="Exact Aiming">
           <SVGCanvas />
         </Wrapper>
       </header>
