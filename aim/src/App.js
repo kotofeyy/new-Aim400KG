@@ -1,13 +1,13 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
-import Wrapper from "./Components/Wrapper";
 import SVGCanvas from "./Components/SVGCanvas/SVGCanvas";
+import Wrapper from "./Components/Wrapper";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Wrapper>
+        <Wrapper title="">
           <SVGCanvas />
         </Wrapper>
       </header>

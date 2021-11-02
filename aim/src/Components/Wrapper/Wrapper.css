@@ -7,4 +7,14 @@
   color: black;
   padding: 2px 10px;
   border-radius: 5px 5px 0px 0px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+.wrapper__game_performance {
+  color: rgb(69, 172, 137);
+}
+
+.wrapper__close {
+  cursor: pointer;
 }

@@ -3,7 +3,7 @@ import generateValue from "../Utils/generateValue";
 import Ball from "./Ball";
 import "./SVGCanvas.css";
 
-function SVGCanvas() {
+function SVGCanvas({ currentClick }) {
   const [balls, setBalls] = React.useState(
     Array.from({ length: 1 }, (_el, index) => ({
       key: index++,
@@ -14,11 +14,13 @@ function SVGCanvas() {
 
   React.useEffect(() => {
     const intervalId = setInterval(() => {
-      balls.push({
-        key: generateValue().generateCX(),
-        cx: generateValue().generateCX(),
-        cy: generateValue().generateCY(),
-      });
+      balls.length < 50
+        ? balls.push({
+            key: generateValue().generateCX(),
+            cx: generateValue().generateCX(),
+            cy: generateValue().generateCY(),
+          })
+        : clearInterval(intervalId);
     }, 500);
     return () => clearInterval(intervalId);
   });
@@ -48,7 +50,9 @@ function SVGCanvas() {
             cx={item.cx}
             cy={item.cy}
             index={i}
-            removeBall={() => removeBall(i)}
+            removeBall={() => {
+              removeBall(i);
+            }}
           />
         );
       })}
