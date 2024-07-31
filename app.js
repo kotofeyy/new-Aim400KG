@@ -42,11 +42,11 @@ let circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
 function spawnCircle() {
     circle.setAttribute(
         'cx',
-        getRandomInt(CIRCLE_RADIUS * 2, svg.clientWidth - CIRCLE_RADIUS)
+        getRandomInt(CIRCLE_RADIUS * 2, svg.clientWidth - CIRCLE_RADIUS * 2)
     );
     circle.setAttribute(
         'cy',
-        getRandomInt(CIRCLE_RADIUS * 2, svg.clientHeight - CIRCLE_RADIUS)
+        getRandomInt(CIRCLE_RADIUS * 2, svg.clientHeight - CIRCLE_RADIUS * 2)
     );
     circle.setAttribute('fill', colorList[getRandomInt(0, 6)]);
     circle.setAttribute('r', CIRCLE_RADIUS);

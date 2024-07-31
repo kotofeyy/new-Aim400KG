@@ -8,19 +8,51 @@
 
     <body>
         <div class="wrapper">
-            <svg
-                version="2"
-                baseProfile="full"
-                width="100%"
-                height="100vh"
-                xmlns="http://www.w3.org/2000/svg"
-                class="demo"
-            ></svg>
-            <div class="score">
-                <div class="seconds">0 ms</div>
-                <div class="average">0 ms</div>
+            <div class="buttons_wrapper">
+                <button class="bt aim" onclick="launchGame(this)">
+                    aim 400kg
+                </button>
+                <button class="bt memory" onclick="launchGame(this)">
+                    memory game
+                </button>
+            </div>
+
+            <div class="aim_wrapper">
+                <svg
+                    version="2"
+                    baseProfile="full"
+                    width="100%"
+                    height="100vh"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="demo"
+                ></svg>
+                <div class="score">
+                    <div class="seconds">0 ms</div>
+                    <div class="average">0 ms</div>
+                </div>
+            </div>
+            <div class="memory_wrapper">
+                <div>MEMORY GAME SOON</div>
             </div>
         </div>
     </body>
+    <script>
+        function launchGame(dv) {
+            if (dv.className === 'bt aim') {
+                let el = document.querySelector('.aim_wrapper');
+                el.style.display = 'block';
+                el.style.display = 'flex';
+                document.querySelector('.buttons_wrapper').style.display =
+                    'none';
+            }
+            if (dv.className === 'bt memory') {
+                let el = document.querySelector('.memory_wrapper');
+                el.style.display = 'block';
+                el.style.display = 'flex';
+                document.querySelector('.buttons_wrapper').style.display =
+                    'none';
+            }
+        }
+    </script>
     <script src="app.js" />
 </html>
