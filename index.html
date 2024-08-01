@@ -32,7 +32,9 @@
                 </div>
             </div>
             <div class="memory_wrapper">
-                <div>MEMORY GAME SOON</div>
+                <div>remember the purple blocks</div>
+                <div class="memoryDiv"></div>
+                <button class="bt mem">REMEMBERED</button>
             </div>
         </div>
     </body>
@@ -40,15 +42,14 @@
         function launchGame(dv) {
             if (dv.className === 'bt aim') {
                 let el = document.querySelector('.aim_wrapper');
-                el.style.display = 'block';
                 el.style.display = 'flex';
                 document.querySelector('.buttons_wrapper').style.display =
                     'none';
             }
             if (dv.className === 'bt memory') {
-                let el = document.querySelector('.memory_wrapper');
-                el.style.display = 'block';
-                el.style.display = 'flex';
+                document.querySelector('.memory_wrapper').style.display =
+                    'block';
+                document.querySelector('.memoryDiv').style.display = 'grid';
                 document.querySelector('.buttons_wrapper').style.display =
                     'none';
             }

@@ -18,6 +18,16 @@ body {
 }
 .memory_wrapper {
     display: none;
+    
+}
+.memoryDiv {
+    max-width: 320px;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.memoryRotate {
+    transition: transform 0.5s ease;
+    transform: rotate(180deg)
 }
 .aim {
     background-color: #9933FF;
