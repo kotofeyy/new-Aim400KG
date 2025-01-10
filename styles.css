@@ -6,43 +6,32 @@ body {
     font-family: "Gill Sans", sans-serif;
     font-size: 28px;
 }
-.wrapper {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.aim_wrapper {
-    display: none;
-    width: 100%;
-}
-.memory_wrapper {
-    display: none;
-    
-}
-.memoryDiv {
-    max-width: 320px;
-    gap: 10px;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-.memoryRotate {
-    transition: transform 0.5s ease;
-    transform: rotate(180deg)
-}
-.aim {
-    background-color: #9933FF;
-}
-.memory {
-    background-color: #6633FF;
-}
+
 .bt {
     border-radius: 6px;
     border: none;
     color: white;
     padding: 12px 16px 12px 16px;
 }
+
 .bt:hover {
     cursor: pointer;
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aim_wrapper {
+    display: none;
+    width: 100%;
+}
+
+.aim {
+    background-color: #9933FF;
 }
 
 .score {
@@ -52,6 +41,41 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .average {
     color: greenyellow;
 }
+
+/* MEMORY ZONE */
+.memory {
+    background-color: #6633FF;
+}
+
+.memory_wrapper {
+    display: none;
+
+}
+
+.memoryDiv {
+    max-width: 320px;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.memoryDiv div {
+    cursor: pointer;
+}
+
+.memoryRotate {
+    transition: all 0.5s ease;
+    transform: rotate(180deg)
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.div1 {}

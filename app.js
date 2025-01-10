@@ -1,3 +1,42 @@
+/* MEMORY ZONE */
+const memoryWrapper = document.querySelector('.memoryDiv');
+const child = memoryWrapper.children;
+const btRotate = document.querySelector('.mem');
+
+btRotate.addEventListener('click', function () {
+    memoryWrapper.classList.add('memoryRotate');
+    for(i = 0; i <= child.length; i++){
+        child[i].style.backgroundColor = 'darkgray'
+    }
+});
+{
+const values = [...Array(9)].map((_, i) => i);
+const result = [...Array(3)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
+const arr = []
+var counter = 0;
+for (i = 0; i <= 8; i++) {
+    let block = document.createElement('div');
+    block.style.width = '100px';
+    block.style.height = '100px';
+    var rand = getRandomInt(0, 2);
+    console.log('i - ', result[i])
+    if(i === result[i]) console.log('i - ', i);
+    // if (rand === 0) {
+    //     arr.push(i)
+    //     counter++;
+    // }
+    // block.style.backgroundColor = ['#9933FF', '#00CC99'][rand];
+    // if (counter > 3) {
+    //     block.style.backgroundColor = '#00CC99';
+    // }
+    memoryWrapper.appendChild(block);
+}
+arr.splice(3, 2);
+console.log('result - ', result)
+
+}
+
+/*  AIM ZONE  */
 const colorList = [
     '#9933FF',
     '#6633FF',
@@ -7,29 +46,6 @@ const colorList = [
     '#FF6666',
     '#FF6600',
 ];
-const memoryWrapper = document.querySelector('.memoryDiv');
-const btRotate = document.querySelector('.mem');
-
-btRotate.addEventListener('click', function () {
-    memoryWrapper.classList.add('memoryRotate');
-});
-
-var counter = 0;
-for (i = 0; i <= 8; i++) {
-    let block = document.createElement('div');
-    block.style.width = '100px';
-    block.style.height = '100px';
-    var rand = getRandomInt(0, 2);
-    if (rand === 0) {
-        counter++;
-    }
-    block.style.backgroundColor = ['#9933FF', '#00CC99'][rand];
-    if (counter > 3) {
-        block.style.backgroundColor = '#00CC99';
-    }
-    memoryWrapper.appendChild(block);
-}
-
 const CIRCLE_RADIUS = 40;
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
