@@ -12,9 +12,12 @@
                 <button class="bt aim" onclick="launchGame(this)">
                     aim 400kg
                 </button>
-                <button class="bt memory" onclick="launchGame(this)">
-                    memory game
-                </button>
+                <a href="./memory.html">
+                    <button class="bt memory" onclick="launchGame(this)">
+                        memory game
+                    </button>
+                </a>
+                
             </div>
 
             <div class="aim_wrapper">
@@ -31,11 +34,7 @@
                     <div class="average">0 ms</div>
                 </div>
             </div>
-            <div class="memory_wrapper">
-                <div>remember the purple blocks</div>
-                <div class="memoryDiv"></div>
-                <button class="bt mem">REMEMBERED</button>
-            </div>
+            
         </div>
     </body>
     <script>
@@ -43,13 +42,6 @@
             if (dv.className === 'bt aim') {
                 let el = document.querySelector('.aim_wrapper');
                 el.style.display = 'flex';
-                document.querySelector('.buttons_wrapper').style.display =
-                    'none';
-            }
-            if (dv.className === 'bt memory') {
-                document.querySelector('.memory_wrapper').style.display =
-                    'block';
-                document.querySelector('.memoryDiv').style.display = 'grid';
                 document.querySelector('.buttons_wrapper').style.display =
                     'none';
             }
