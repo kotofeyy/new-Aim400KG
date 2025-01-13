@@ -5,7 +5,6 @@ body {
     margin: 0;
     font-family: "Gill Sans", sans-serif;
     font-size: 28px;
-
 }
 
 .bt {
@@ -27,7 +26,7 @@ body {
 }
 
 .aim_wrapper {
-    display: none;
+    display: flex;
     width: 100%;
 }
 
@@ -54,6 +53,10 @@ body {
 /* MEMORY ZONE */
 .memory {
     background-color: #6633FF;
+}
+
+.colorOf {
+    background-color: lightcoral;
 }
 
 .memory_wrapper {

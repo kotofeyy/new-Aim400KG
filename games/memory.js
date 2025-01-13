@@ -47,13 +47,10 @@ function rotateBlocks() {
         memoryWrapper.style.transform = `rotate(${this.d = (this.d | 0) - 90}deg)`;
     }
     
-
     for(i = 0; i < child.length; i++){
         child[i].style.backgroundColor = 'darkgray'
     }
 }
-
-
 
 function generate() {
     for(i = 0; i < child.length; i++){

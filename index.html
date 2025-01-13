@@ -3,49 +3,29 @@
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="styles.css" />
-        <title>Моя тестовая страница</title>
+        <title>NORTH</title>
     </head>
 
     <body>
         <div class="wrapper">
             <div class="buttons_wrapper">
-                <button class="bt aim" onclick="launchGame(this)">
-                    aim 400kg
-                </button>
-                <a href="./memory.html">
-                    <button class="bt memory" onclick="launchGame(this)">
+                <a href="games/aim400kg.html">
+                    <button class="bt aim">
+                        aim 400kg
+                    </button>
+                </a>
+                <a href="./games/memory.html">
+                    <button class="bt memory" >
                         memory game
                     </button>
                 </a>
-                
+                <a href="./games/ColorOfDeception/colorOfDeception.html">
+                    <button class="bt colorOf" >
+                        color of deception
+                    </button>
+                </a>
             </div>
-
-            <div class="aim_wrapper">
-                <svg
-                    version="2"
-                    baseProfile="full"
-                    width="100%"
-                    height="100vh"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="demo"
-                ></svg>
-                <div class="score">
-                    <div class="seconds">0 ms</div>
-                    <div class="average">0 ms</div>
-                </div>
-            </div>
-            
         </div>
     </body>
-    <script>
-        function launchGame(dv) {
-            if (dv.className === 'bt aim') {
-                let el = document.querySelector('.aim_wrapper');
-                el.style.display = 'flex';
-                document.querySelector('.buttons_wrapper').style.display =
-                    'none';
-            }
-        }
-    </script>
     <script src="app.js" />
 </html>
