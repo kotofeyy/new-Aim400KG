@@ -30,7 +30,7 @@ function clickBlock(block) {
             } ОЧКОВ`;
         countSuccess = 0;
         for(i = 0; i < child.length; i++){
-            child[i].style.backgroundColor = '#9933FF'
+            child[i].style.backgroundColor = 'darkgray'
         }
         generate()
     }
@@ -54,7 +54,7 @@ function rotateBlocks() {
 
 function generate() {
     for(i = 0; i < child.length; i++){
-        child[i].style.backgroundColor = '#9933FF'
+        child[i].style.backgroundColor = 'darkgray'
     }
     const values = [...Array(9)].map((_, i) => i);
     result = [...Array(3)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
