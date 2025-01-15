@@ -41,6 +41,8 @@ function clickBlock(id) {
 }
 
 function generateARR() {
+    const values = [...Array(4)].map((_, i) => i);
+    const result = [...Array(4)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
     ARR.splice(0)
     while (blockWrapper.firstChild) {
         blockWrapper.removeChild(blockWrapper.firstChild);
@@ -48,7 +50,7 @@ function generateARR() {
     for(i = 0; i < 4; i++) {
         ARR.push(combine[result[i]]);
     }
-    console.log('ARR - ', ARR)
+
     const val = [...Array(4)].map((_, i) => i);
     const randdd = [...Array(2)].map(() => val.splice(Math.floor(Math.random() * val.length), 1)[0]);
     const bad = {
