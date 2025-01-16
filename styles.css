@@ -12,6 +12,13 @@ body {
     border: none;
     color: white;
     padding: 12px 16px 12px 16px;
+    margin: 10px;
+}
+
+.buttons_wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .bt:hover {
@@ -36,6 +43,10 @@ body {
 
 .mem {
     background-color: coral;
+}
+
+.switch {
+    background-color: lightgreen;
 }
 
 .score {

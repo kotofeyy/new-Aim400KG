@@ -1,7 +1,6 @@
 const values = [...Array(4)].map((_, i) => i);
 const result = [...Array(4)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
 
-
 const ARR = []
 
 const wordList = ['Black', 'Yellow', 'Green', 'Blue'];
@@ -30,14 +29,11 @@ const combine = [
 ]
 const blockWrapper = document.querySelector('.blockWrapper')
 
-
-
 function clickBlock(id) {
     if(id === 'bad') console.log('URAA');
     else console.log('HUIII')
     generateARR()
     htmlAppend()
-
 }
 
 function generateARR() {
@@ -62,7 +58,6 @@ function generateARR() {
     ARR[rrrr] = bad
 }
 
-
 function htmlAppend() {
     for(i = 0; i < ARR.length; i++) {
         const block = document.createElement('div');
@@ -74,6 +69,5 @@ function htmlAppend() {
         blockWrapper.append(block)
     }
 }
-
 generateARR()
 htmlAppend()
