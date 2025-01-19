@@ -1,7 +1,7 @@
 
 let mode = 'games'
 function openPage(page) {
-    console.log(page)
+    console.log("PAGE -", page)
     mode = page
     let el = document.getElementsByTagName('section')
     for (var i = 0; i < el.length; i++) {
@@ -10,6 +10,12 @@ function openPage(page) {
     document.getElementById(page).style.display = 'block'
     if(mode === "memory") {
         const memoryWrapper = document.querySelector('.memoryDiv');
+        for(i=0; i < 9; i++) {
+            const block = document.createElement('div');
+            block.id = i
+            block.addEventListener('click', () => clickBlock(block))
+            memoryWrapper.append(block)
+        }
         const child = memoryWrapper.children;
         // const btRotate = document.querySelector('.mem');
         // const text = document.querySelector('.text')
@@ -19,7 +25,7 @@ function openPage(page) {
     
         let countSuccess = 0;
     
-        clickBlock = (block) => {
+        function clickBlock (block) {
             if(result.includes(Number(block.id))) {
                 block.style.backgroundColor = '#00CC99'
                 countSuccess+=1;
@@ -63,10 +69,10 @@ function openPage(page) {
             }
         }
     
-        function generate() {
-            for(i = 0; i < child.length; i++){
+        generate = () => {
+            for(i = 0; i < child.length; i++) 
                 child[i].style.backgroundColor = 'darkgray'
-            }
+            
             const values = [...Array(9)].map((_, i) => i);
             result = [...Array(3)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
             console.log('result - ', result)
