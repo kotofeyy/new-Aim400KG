@@ -1,8 +1,7 @@
 {
-  "name": "new-aim400kg",
+  "name": "BRAIN-BRAIN",
   "version": "1.0.0",
   "description": "just4fun",
-  "main": "app.js",
   "source": "index.html",
   "scripts": {
     "start": "parcel --open --port 3000",
