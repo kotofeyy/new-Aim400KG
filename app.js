@@ -8,6 +8,11 @@ function openPage(page) {
         el[i].style.display = 'none'
     }
     document.getElementById(page).style.display = 'block'
+
+
+
+
+
     if(mode === "memory") {
         const memoryWrapper = document.querySelector('.memoryDiv');
         for(i=0; i < 9; i++) {
@@ -16,16 +21,22 @@ function openPage(page) {
             block.addEventListener('click', () => clickBlock(block))
             memoryWrapper.append(block)
         }
-        const child = memoryWrapper.children;
-        // const btRotate = document.querySelector('.mem');
+        const children = memoryWrapper.children;
+        // for(i = 0; i < children.length; i++){
+        //     children[i].addEventListener('click', clickBlock)
+        // }
+        const btRotate = document.getElementById('bt')
         // const text = document.querySelector('.text')
         const scoreHTML = document.querySelector('.score')
         let score = 0;
         let result
+
+        let isRemember = false
     
         let countSuccess = 0;
     
         function clickBlock (block) {
+            if(!isRemember) return
             if(result.includes(Number(block.id))) {
                 block.style.backgroundColor = '#00CC99'
                 countSuccess+=1;
@@ -36,6 +47,9 @@ function openPage(page) {
                         score
                     } ОЧКОВ`;
                     countSuccess = 0;
+                    btRotate.disabled = false
+                    btRotate.classList.remove('btDis')
+                    isRemember = false
                     generate();
                 }
             }
@@ -46,14 +60,20 @@ function openPage(page) {
                         score
                     } ОЧКОВ`;
                 countSuccess = 0;
-                for(i = 0; i < child.length; i++){
-                    child[i].style.backgroundColor = 'darkgray'
+                btRotate.disabled = false
+                btRotate.classList.remove('btDis')
+                isRemember = false
+                for(i = 0; i < children.length; i++){
+                    children[i].style.backgroundColor = 'darkgray'
                 }
                 generate()
             }
         }
     
         rotateBlocks = () => {
+            isRemember = true
+            btRotate.disabled = true
+            btRotate.classList.add('btDis')
             const rand = Math.floor(Math.random() * 2);
             if(rand === 1) {
                 memoryWrapper.style.transition = 'all 0.5s ease';
@@ -64,19 +84,19 @@ function openPage(page) {
                 memoryWrapper.style.transform = `rotate(${this.d = (this.d | 0) - 90}deg)`;
             }
     
-            for(i = 0; i < child.length; i++){
-                child[i].style.backgroundColor = 'darkgray'
+            for(i = 0; i < children.length; i++){
+                children[i].style.backgroundColor = 'darkgray'
             }
         }
     
         generate = () => {
-            for(i = 0; i < child.length; i++) 
-                child[i].style.backgroundColor = 'darkgray'
+            for(i = 0; i < children.length; i++) 
+                children[i].style.backgroundColor = 'darkgray'
             
             const values = [...Array(9)].map((_, i) => i);
             result = [...Array(3)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
             console.log('result - ', result)
-            result.map((i) => child[i].style.backgroundColor = '#00CC99')
+            result.map((i) => children[i].style.backgroundColor = '#00CC99')
         }
         generate()
 
@@ -84,17 +104,17 @@ function openPage(page) {
     if(mode === "aim") {
         /*  AIM ZONE  */
         const colorList = [
-    '#9933FF',
-    '#6633FF',
-    '#00CCFF',
-    '#00CC99',
-    '#FF0066',
-    '#FF6666',
-    '#FF6600',
+            '#9933FF',
+            '#6633FF',
+            '#00CCFF',
+            '#00CC99',
+            '#FF0066',
+            '#FF6666',
+            '#FF6600',
         ];
         const CIRCLE_RADIUS = 40;
         function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+            return Math.floor(Math.random() * (max - min) + min);
         }
 
         let timerStart, timerEnd;
@@ -103,120 +123,118 @@ function openPage(page) {
         let averageArr = [];
 
         function timer() {
-    if (isFirst) {
-        timerStart = new Date().valueOf();
-        isFirst = false;
-    } else {
-        timerEnd = new Date().valueOf();
-        document.querySelector('.seconds').textContent = `${
-            timerEnd - timerStart
-        } ms`;
-        averageArr.push(timerEnd - timerStart);
-        timerStart = new Date().valueOf();
-    }
+            if (isFirst) {
+                timerStart = new Date().valueOf();
+                isFirst = false;
+            } else {
+                timerEnd = new Date().valueOf();
+                document.querySelector('.seconds').textContent = `${
+                    timerEnd - timerStart
+                } ms`;
+                averageArr.push(timerEnd - timerStart);
+                timerStart = new Date().valueOf();
+            }
         }
 
         function showAverage() {
-    document.querySelector('.average').textContent = `${Math.floor(
-        averageArr.reduce((acc, number) => acc + number, 0) / averageArr.length
-    )} ms`;
+            document.querySelector('.average').textContent = `${Math.floor(
+                averageArr.reduce((acc, number) => acc + number, 0) / averageArr.length
+            )} ms`;
         }
 
         let svg = document.querySelector('.demo');
         let circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
 
         function spawnCircle() {
-    circle.setAttribute(
-        'cx',
-        getRandomInt(CIRCLE_RADIUS * 2, svg.clientWidth - CIRCLE_RADIUS * 2)
-    );
-    circle.setAttribute(
-        'cy',
-        getRandomInt(CIRCLE_RADIUS * 2, svg.clientHeight - CIRCLE_RADIUS * 2)
-    );
-    circle.setAttribute('fill', colorList[getRandomInt(0, 6)]);
-    circle.setAttribute('r', CIRCLE_RADIUS);
+            circle.setAttribute(
+                'cx',
+                getRandomInt(CIRCLE_RADIUS * 2, svg.clientWidth - CIRCLE_RADIUS * 2)
+            );
+            circle.setAttribute(
+                'cy',
+                getRandomInt(CIRCLE_RADIUS * 2, svg.clientHeight - CIRCLE_RADIUS * 2)
+            );
+            circle.setAttribute('fill', colorList[getRandomInt(0, 6)]);
+            circle.setAttribute('r', CIRCLE_RADIUS);
         }
 
         circle.addEventListener('click', () => {
-    timer();
-    spawnCircle();
-    showAverage();
+            timer();
+            spawnCircle();
+            showAverage();
         });
+        timer();
         spawnCircle();
         document.querySelector('.demo').appendChild(circle);
     }
     if(mode === 'wrongColor') {
-        const values = [...Array(4)].map((_, i) => i);
-        const result = [...Array(4)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
+        // const values = [...Array(4)].map((_, i) => i);
+        // const result = [...Array(4)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
 
         const ARR = []
 
-        const wordList = ['Black', 'Yellow', 'Green', 'Blue'];
-        const colorList = ['black', 'gold', 'green', 'blue'];
         const combine = [
-    {
-        "color":'black',
-        "text":'Black',
-        "status":'ok'
-    },
-    {
-        "color":'gold',
-        "text":'Yellow',
-        "status":'ok'
-    },
-    {
-        "color":'green',
-        "text":'Green',
-        "status":'ok'
-    },
-    {
-        "color":'blue',
-        "text":'Blue',
-        "status":'ok'
-    },
+            {
+                "color":'black',
+                "text":'Черный',
+                "status":'ok'
+            },
+            {
+                "color":'gold',
+                "text":'Желтый',
+                "status":'ok'
+            },
+            {
+                "color":'green',
+                "text":'Зеленый',
+                "status":'ok'
+            },
+            {
+                "color":'blue',
+                "text":'Синий',
+                "status":'ok'
+            },
         ]
         const blockWrapper = document.querySelector('.blockWrapper')
-
         function clickBlock(id) {
-    if(id === 'bad') console.log('URAA');
-    else console.log('HUIII')
-    generateARR()
-    htmlAppend()
+            if(id === 'bad') console.log('URAA');
+            else console.log('HUIII')
+            generateARR()
+            htmlAppend()
         }
 
         function generateARR() {
-    const values = [...Array(4)].map((_, i) => i);
-    const result = [...Array(4)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
-    ARR.splice(0)
-    while (blockWrapper.firstChild) {
-        blockWrapper.removeChild(blockWrapper.firstChild);
-      }
-    for(i = 0; i < 4; i++) {
-        ARR.push(combine[result[i]]);
-    }
+            const values = [...Array(4)].map((_, i) => i);
+            const result = [...Array(4)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
+            ARR.splice(0)
+            while (blockWrapper.firstChild) {
+                blockWrapper.removeChild(blockWrapper.firstChild);
+              }
+            for(i = 0; i < 4; i++) {
+                ARR.push(combine[result[i]]);
+            }
 
-    const val = [...Array(4)].map((_, i) => i);
-    const randdd = [...Array(2)].map(() => val.splice(Math.floor(Math.random() * val.length), 1)[0]);
-    const bad = {
-        "color": combine[randdd[0]].color,
-        "text": combine[randdd[1]].text,
-        "status": "bad"
-    }
-    const rrrr = Math.floor(Math.random() * 4);
-    ARR[rrrr] = bad
+            const val = [...Array(4)].map((_, i) => i);
+            const randdd = [...Array(2)].map(() => val.splice(Math.floor(Math.random() * val.length), 1)[0]);
+            const bad = {
+                "color": combine[randdd[0]].color,
+                "text": combine[randdd[1]].text,
+                "status": "bad"
+            }
+            const rrrr = Math.floor(Math.random() * 4);
+            ARR[rrrr] = bad
         }
 
         function htmlAppend() {
-    for(i = 0; i < ARR.length; i++) {
-        const block = document.createElement('div');
-        block.className = 'block';
-        block.onclick = () => clickBlock(block.id);
-        block.style.backgroundColor = ARR[i].color;
-        block.textContent = ARR[i].text;
-        block.id = ARR[i].status
-        blockWrapper.append(block)
-    }
+            for(i = 0; i < ARR.length; i++) {
+                const block = document.createElement('div');
+                block.className = 'block';
+                block.onclick = () => clickBlock(block.id);
+                block.style.backgroundColor = ARR[i].color;
+                block.textContent = ARR[i].text;
+                block.id = ARR[i].status
+                blockWrapper.append(block)
+            }
         }
         generateARR()
         htmlAppend()
@@ -298,7 +316,6 @@ function openPage(page) {
         }
     }
 }
-
 window.onload = () => {
     
     
