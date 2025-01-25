@@ -9,6 +9,18 @@ body {
     font-size: 28px;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 120px;
+    margin-left: 120px;
+}
+
+.closeButton {
+    cursor: pointer;
+}
+
 .wrapper {
     height: calc(100vh - 101px);
     display: flex;

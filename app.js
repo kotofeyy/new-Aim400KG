@@ -1,4 +1,3 @@
-
 let mode = 'games'
 function openPage(page) {
     console.log("PAGE -", page)
@@ -22,11 +21,9 @@ function openPage(page) {
             memoryWrapper.append(block)
         }
         const children = memoryWrapper.children;
-        // for(i = 0; i < children.length; i++){
-        //     children[i].addEventListener('click', clickBlock)
-        // }
+      
         const btRotate = document.getElementById('bt')
-        // const text = document.querySelector('.text')
+        
         const scoreHTML = document.querySelector('.score')
         let score = 0;
         let result
@@ -146,6 +143,7 @@ function openPage(page) {
         let circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
 
         function spawnCircle() {
+            // document.querySelector('circle')?.remove()
             circle.setAttribute(
                 'cx',
                 getRandomInt(CIRCLE_RADIUS * 2, svg.clientWidth - CIRCLE_RADIUS * 2)
@@ -315,9 +313,5 @@ function openPage(page) {
             }
         }
     }
-}
-window.onload = () => {
-    
-    
 }
 
