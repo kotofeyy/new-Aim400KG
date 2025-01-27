@@ -64,13 +64,14 @@ section {
 #games {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    /* width: 200px; */
 }
 
 .bt {
     cursor: pointer;
-
-    height: 50px;
+    width: 100%;
+    min-height: 150px;
+    font-size: 24px;
     border-radius: 6px;
     border: none;
     color: white;

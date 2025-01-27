@@ -1,4 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    let intervalVariable = undefined;  
+    let timeleft = 0;  
+    let totaltime = 0;  
+
+    const startTimer = () => {  
+       // Создаем интервал, который будет считать нам время
+       intervalVariable = setInterval(updateTime, 10);  
+    }  
+
+     const resetTimer = () => {  
+       // Останавливаем таймер
+       stopTimer();
+       timeleft = -10;
+    
+       // Обновляем значение в ui
+       updateTime();  
+    }  
+
+    const stopTimer = () => {
+       // Производим очистку интервала
+       clearInterval(intervalVariable);  
+    } 
+
+    const updateTime = () => {
+        if(Math.floor(timeleft / 1000) > 9) stopTimer()
+       // Шаг 10 миллисекунд
+       timeleft = timeleft + 10;  
+    
+       // Получаем нужные нам элементы
+       const timers = document.getElementById("timers");  
+       const timerms = document.getElementById("timerms"); 
+       const milli = timeleft % 1000;  
+    
+       // Устанавливаем значения
+       timers.innerHTML = Math.floor(timeleft / 1000);  
+       timerms.innerHTML = Math.floor(milli / 10);  
+       timers.style.color = "green";  
+       timerms.style.color = "red";  
+    }  
+
+
     function handleHashChange() {
         let route = window.location.hash.substring(1);
         console.log('route - ', route)
@@ -13,15 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                 if(childRoute === "memory") {
-                    console.log('meemoty section')
+                    startTimer()
                     const memoryWrapper = document.querySelector('.memoryDiv');
-                    
                     
                     const children = memoryWrapper.children;
                   
-                    const btRotate = document.getElementById('bt')
+                    const btRotate = document.getElementById('btRotate')
+                    btRotate.addEventListener("click", rotateBlocks)
                     
                     const scoreHTML = document.querySelector('.score')
+                    scoreHTML.textContent = '0 очков'
                     let score = 0;
                     let result
             
@@ -34,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if(result.includes(Number(block.id))) {
                             block.style.backgroundColor = '#00CC99'
                             countSuccess+=1;
-                            console.log('count - ', countSuccess)
+
                             if(countSuccess === 3) {
                                 score++;
                                 scoreHTML.textContent = `${
@@ -93,6 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         result.map((i) => children[i].style.backgroundColor = '#00CC99')
                     }
                     function generateHtml() {
+                        let child = memoryWrapper.lastElementChild;
+                        while (child) {
+                            memoryWrapper.removeChild(child);
+                            child = memoryWrapper.lastElementChild;
+                        }
                         for(i=0; i < 9; i++) {
                             const block = document.createElement('div');
                             block.id = i
@@ -206,8 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
             
                     function generateArrayOfColoredBlocks() {
-                        const values = [...arrayOfColoredBlocksay(4)].map((_, i) => i);
-                        const result = [...arrayOfColoredBlocksay(4)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
+                        const values = [...Array(4)].map((_, i) => i);
+                        const result = [...Array(4)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
                         arrayOfColoredBlocks.splice(0)
                         while (blockWrapper.firstChild) {
                             blockWrapper.removeChild(blockWrapper.firstChild);
@@ -216,8 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             arrayOfColoredBlocks.push(combine[result[i]]);
                         }
             
-                        const val = [...arrayOfColoredBlocksay(4)].map((_, i) => i);
-                        const randdd = [...arrayOfColoredBlocksay(2)].map(() => val.splice(Math.floor(Math.random() * val.length), 1)[0]);
+                        const val = [...Array(4)].map((_, i) => i);
+                        const randdd = [...Array(2)].map(() => val.splice(Math.floor(Math.random() * val.length), 1)[0]);
                         const bad = {
                             "color": combine[randdd[0]].color,
                             "text": combine[randdd[1]].text,
