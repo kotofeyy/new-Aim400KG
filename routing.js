@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         div.style.display = 'block'
     }}
 
-    document.querySelector('#back-button').addEventListener('click', function() {
-        if (window.history.length > 1) {
-            window.history.go(-1);
-        }
-      });
+    // document.querySelector('#back-button').addEventListener('click', function() {
+    //     if (window.history.length > 1) {
+    //         window.history.go(-1);
+    //     }
+    //   });
 
     window.addEventListener('hashchange', handleHashChange);
     handleHashChange(); 

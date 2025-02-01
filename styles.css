@@ -1,20 +1,25 @@
 /* MAIN */
 
-body {
-    /* width: 100%; */
+/* body {
+    width: 100%; 
     height: 100vh;
     padding: 0;
     margin: 0;
     font-family: "Gill Sans", sans-serif;
     font-size: 28px;
-}
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin-top: 120px;
-    margin-left: 120px;
+} */
+body {
+    font-family: Arial, sans-serif;
+    /* font-family: "Gill Sans", sans-serif; */
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 28px;
+    /* padding: 10px; */
+    /* Добавляем отступы для мобильных устройств */
 }
 
 .closeButton {
@@ -26,30 +31,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.btNav {
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    /* color: white; */
-    font-size: 20px;
-}
-
-.nav-bar {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* position: fixed;
-    bottom: 0; */
-    /* background-color: gainsboro; */
-    border-top: 1px solid gray;
 }
 
 section {
@@ -68,188 +49,134 @@ section {
 }
 
 .bt {
-    cursor: pointer;
-    width: 100%;
-    min-height: 150px;
+    padding: 20px 30px;
+    /* Крупные кнопки */
     font-size: 24px;
-    border-radius: 6px;
+    /* Крупный текст */
+    cursor: pointer;
     border: none;
-    color: white;
-    padding: 12px 16px 12px 16px;
-    margin: 10px;
-    background-color: #6633FF;
-    flex-grow: 1 1 auto;
-}
-
-
-/* AIM */
-
-.aim_wrapper {
-    display: flex;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px;
+    /* Скругленные углы */
     width: 100%;
+    /* Кнопки на всю ширину */
+    transition: background-color 0.3s;
 }
 
-.score {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.average {
-    color: greenyellow;
-}
-
-/* MEMORY ZONE */
-.memory {
-    background-color: #6633FF;
-}
-
-.colorOf {
-    background-color: lightcoral;
-}
-
-.btDis {
-    background-color: gray;
-}
-
-.memory_wrapper {
-    width: 100%;
-    /* height: 100vh; */
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-.memoryDiv {
-    display: grid;
-    /* width: 320px; */
-    gap: 10px;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.memoryDiv div {
-    cursor: pointer;
-    width: 150px;
-    height: 150px;
-    background-color: #9933FF;
-    border-radius: 8px;
-}
-
-/* WRONG COLOR */
-.uWrapper {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.block {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: red; */
-    color: white;
-    width: 150px;
-    height: 150px;
-    margin: 10px;
-    border-radius: 8px;
-}
-
-.blockWrapper {
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
-/* SWITCHING */
-.switchWrapper {
-    min-height: 300px;
-    max-height: 600px;
-    min-width: 400px;
-    max-width: 500px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: beige;
-}
-
-@keyframes shadowOk {
-    from {
-        box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
-        -webkit-box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
-        -moz-box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
-    }
-
-    to {
-        box-shadow: 0px 0px 99px 38px rgba(34, 80, 37, 0.78);
-        -webkit-box-shadow: 0px 0px 99px 38px rgba(34, 80, 37, 0.78);
-        -moz-box-shadow: 0px 0px 99px 38px rgba(34, 80, 37, 0.78);
-    }
-}
-
-@keyframes shadowBad {
-    from {
-        box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
-        -webkit-box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
-        -moz-box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
-    }
-
-    to {
-        box-shadow: 0px 0px 99px 38px rgba(224, 53, 53, 0.78);
-        -webkit-box-shadow: 0px 0px 99px 38px rgba(224, 53, 53, 0.78);
-        -moz-box-shadow: 0px 0px 99px 38px rgba(224, 53, 53, 0.78);
-    }
-}
-
-.shadowOk {
-    animation-duration: 0.1s;
-    animation-name: shadowOk;
-}
-
-.shadowBad {
-    animation-duration: 0.1s;
-    animation-name: shadowBad;
-}
-
-.switchWrapper::after {
-    content: "";
-    border: 1px solid black;
-    position: absolute;
-    min-height: 300px;
-    max-height: 600px;
-}
-
-.uWrapper button {
-    cursor: pointer;
-    border-radius: 6px;
-    border: none;
-    color: white;
-    padding: 12px 16px 12px 16px;
-    margin: 10px;
-    background-color: chocolate;
-}
-
-.question {
-    margin: 20px 0px;
-    color: brown;
-}
-
-.blockSwitch {
-    color: black;
-    width: 200px;
+/*  */
+.menu {
     text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 850px;
+    /* Шире для мобильных устройств */
 }
 
-.left {
-    visibility: hidden;
+.menu h1 {
+    margin-bottom: 30px;
+    /* Больше отступ */
+    font-size: 52px;
+    /* Крупный заголовок */
 }
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 15px 0;
+    /* Больше отступ между кнопками */
+}
+
+.menu-bt {
+    padding: 20px 30px;
+    /* Крупные кнопки */
+    font-size: 48px;
+    /* Крупный текст */
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px;
+    /* Скругленные углы */
+    width: 100%;
+    /* Кнопки на всю ширину */
+    transition: background-color 0.3s;
+}
+
+/* .menu-bt:hover {
+    background-color: #0056b3;
+} */
+
+.hidden {
+    display: none;
+}
+
+#game-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* max-width: 500px; */
+    /* Шире для мобильных устройств */
+}
+
+#game-container button {
+    margin-bottom: 20px;
+    padding: 15px 25px;
+    /* Крупные кнопки */
+    font-size: 20px;
+    /* Крупный текст */
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px;
+    /* Скругленные углы */
+    transition: background-color 0.3s;
+}
+
+#game-container button:hover {
+    background-color: #0056b3;
+}
+
+#game-content {
+    font-size: 20px;
+    /* Крупный текст в контенте игры */
+}
+
+/* Медиа-запросы для устройств с шириной экрана менее 600px */
+@media (min-width: 800px) {
+    .menu h1 {
+        font-size: 38px;
+        /* Чуть меньше заголовок для очень маленьких экранов */
+    }
+
+    .menu-bt {
+        font-size: 20px;
+        /* Чуть меньше текст кнопок */
+        padding: 18px 25px;
+        /* Чуть меньше padding */
+    }
+
+    #game-container button {
+        font-size: 18px;
+        /* Чуть меньше текст кнопок */
+        padding: 15px 20px;
+        /* Чуть меньше padding */
+    }
+
+    #game-content {
+        font-size: 18px;
+        /* Чуть меньше текст в контенте игры */
+    }
+}
+
+/*  */

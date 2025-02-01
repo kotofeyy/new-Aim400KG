@@ -1,0 +1,83 @@
+/* SWITCHING */
+.switchWrapper {
+    min-height: 300px;
+    max-height: 600px;
+    min-width: 400px;
+    max-width: 500px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+}
+
+@keyframes shadowOk {
+    from {
+        box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
+        -webkit-box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
+        -moz-box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
+    }
+
+    to {
+        box-shadow: 0px 0px 99px 38px rgba(34, 80, 37, 0.78);
+        -webkit-box-shadow: 0px 0px 99px 38px rgba(34, 80, 37, 0.78);
+        -moz-box-shadow: 0px 0px 99px 38px rgba(34, 80, 37, 0.78);
+    }
+}
+
+@keyframes shadowBad {
+    from {
+        box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
+        -webkit-box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
+        -moz-box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.78);
+    }
+
+    to {
+        box-shadow: 0px 0px 99px 38px rgba(224, 53, 53, 0.78);
+        -webkit-box-shadow: 0px 0px 99px 38px rgba(224, 53, 53, 0.78);
+        -moz-box-shadow: 0px 0px 99px 38px rgba(224, 53, 53, 0.78);
+    }
+}
+
+.shadowOk {
+    animation-duration: 0.1s;
+    animation-name: shadowOk;
+}
+
+.shadowBad {
+    animation-duration: 0.1s;
+    animation-name: shadowBad;
+}
+
+.switchWrapper::after {
+    content: "";
+    border: 1px solid black;
+    position: absolute;
+    min-height: 300px;
+    max-height: 600px;
+}
+
+.uWrapper button {
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    padding: 12px 16px 12px 16px;
+    margin: 10px;
+    background-color: chocolate;
+}
+
+.question {
+    margin: 20px 0px;
+    color: brown;
+}
+
+.blockSwitch {
+    color: black;
+    width: 200px;
+    text-align: center;
+}
+
+.left {
+    visibility: hidden;
+}

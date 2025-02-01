@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } 
 
     const updateTime = () => {
-        if(Math.floor(timeleft / 1000) > 9) stopTimer()
+        if(Math.floor(timeleft / 1000) > 29) stopTimer()
        // Шаг 10 миллисекунд
        timeleft = timeleft + 10;  
     
@@ -364,6 +364,118 @@ document.addEventListener('DOMContentLoaded', () => {
                             question.textContent = 'Является ли буква гласной?'
                         }
                     }
+                }
+                if(childRoute === 'v2') {
+                    const grid = document.getElementById('grid');
+                    const rememberButton = document.getElementById('rememberButton');
+                    const checkButton = document.getElementById('checkButton');
+                    const restartButton = document.getElementById('restartButton');
+                    const message = document.getElementById('message');
+
+                    let selectedCells = [];
+                    let playerSelection = [];
+
+                    function createGrid() {
+                        let child = grid.lastElementChild;
+                        while (child) {
+                            grid.removeChild(child);
+                            child = grid.lastElementChild;
+                        }
+                        for (let i = 0; i < 9; i++) {
+                            const cell = document.createElement('div');
+                            cell.classList.add('cell');
+                            cell.dataset.index = i;
+                            cell.addEventListener('click', () => toggleCellSelection(cell));
+                            grid.appendChild(cell);
+                        }
+                    }
+
+                    function selectRandomCells() {
+    selectedCells = [];
+    while (selectedCells.length < 3) {
+        const randomIndex = Math.floor(Math.random() * 9);
+        if (!selectedCells.includes(randomIndex)) {
+            selectedCells.push(randomIndex);
+        }
+    }
+    selectedCells.forEach(index => {
+        grid.children[index].style.backgroundColor = 'blue';
+    });
+                    }
+
+                    function rotateGrid() {
+    const directions = [
+        // { x: 90, y: 0, z: 0 },   // Вращение по оси X
+        // { x: 0, y: 90, z: 0 },   // Вращение по оси Y
+        // { x: 0, y: 0, z: 90 },   // Вращение по оси Z
+        { x: 180, y: 0, z: 0 },  // Вращение по оси X на 180°
+        { x: 0, y: 180, z: 0 },  // Вращение по оси Y на 180°
+        { x: 0, y: 0, z: 180 },  // Вращение по оси Z на 180°
+    ];
+    const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+    grid.style.transform = `rotateX(${randomDirection.x}deg) rotateY(${randomDirection.y}deg) rotateZ(${randomDirection.z}deg)`;
+                    }
+
+                    function resetGrid() {
+                        grid.style.transform = 'rotateX(0deg) rotateY(0deg) rotateZ(0deg)';
+                        Array.from(grid.children).forEach(cell => {
+                            cell.style.backgroundColor = '#ccc';
+                            cell.classList.remove('selected');
+                        });
+                        playerSelection = [];
+                        message.textContent = '';
+                        restartButton.style.display = 'none';
+                        rememberButton.disabled = false;
+                        checkButton.disabled = true;
+                    }
+
+                    function toggleCellSelection(cell) {
+                        const index = parseInt(cell.dataset.index);
+                    
+                        if (playerSelection.includes(index)) {
+                            playerSelection = playerSelection.filter(i => i !== index);
+                            cell.classList.remove('selected');
+                        } else {
+                            if (playerSelection.length < 3) {
+                                playerSelection.push(index);
+                                cell.classList.add('selected');
+                            }
+                        }
+                    }
+
+                    function checkSelection() {
+                        const correct = playerSelection.every(index => selectedCells.includes(index));
+                        if (correct && playerSelection.length === 3) {
+                            message.textContent = 'Правильно!';
+                        } else {
+                            message.textContent = 'Неправильно, попробуйте еще раз.';
+                        }
+                        restartButton.style.display = 'block';
+                    }
+
+                    function restartGame() {
+                        resetGrid();
+                        selectRandomCells();
+                    }
+
+                    rememberButton.addEventListener('click', () => {
+                        resetGrid();
+                        rotateGrid();
+                        rememberButton.disabled = true;
+                        checkButton.disabled = false;
+                    });
+
+                    checkButton.addEventListener('click', () => {
+                        checkSelection();
+                        rememberButton.disabled = true;
+                        checkButton.disabled = true;
+                    });
+
+                    restartButton.addEventListener('click', restartGame);
+
+                    // Инициализация игры
+                    createGrid();
+                    selectRandomCells();
                 }
             }
         }

@@ -1,0 +1,38 @@
+/* MEMORY ZONE */
+.memory {
+    background-color: #6633FF;
+}
+
+.colorOf {
+    background-color: lightcoral;
+}
+
+.btDis {
+    background-color: gray;
+}
+
+.memory_wrapper {
+    width: 100%;
+    /* height: 100vh; */
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.memoryDiv {
+    display: grid;
+    /* width: 320px; */
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.memoryDiv div {
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    background-color: #9933FF;
+    border-radius: 8px;
+}
