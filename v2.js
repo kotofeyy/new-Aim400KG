@@ -20,6 +20,12 @@ export class v2Memory {
     }
 
     createGrid() {
+        // сброс сетки. нужно, если перезайти на страницу, он генерит плюсом новую сетеку. еблан
+        let child = grid.lastElementChild;
+        while (child) {
+            grid.removeChild(child);
+            child = grid.lastElementChild;
+        }
         for (let i = 0; i < 9; i++) {
             const cell = document.createElement('div');
             cell.classList.add('cell');

@@ -1,4 +1,5 @@
 import { v2Memory } from "./v2";
+import { wrongColor } from "./wrongColor";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -222,74 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.querySelector('.demo').appendChild(circle);
                 }
                 if(childRoute === 'wrongColor') {
-            
-                    const arrayOfColoredBlocks = []
-            
-                    const combine = [
-                        {
-                            "color":'black',
-                            "text":'Черный',
-                            "status":'ok'
-                        },
-                        {
-                            "color":'gold',
-                            "text":'Желтый',
-                            "status":'ok'
-                        },
-                        {
-                            "color":'green',
-                            "text":'Зеленый',
-                            "status":'ok'
-                        },
-                        {
-                            "color":'blue',
-                            "text":'Синий',
-                            "status":'ok'
-                        },
-                    ]
-                    const blockWrapper = document.querySelector('.blockWrapper')
-                    function clickBlock(id) {
-                        if(id === 'bad') console.log('URAA');
-                        else console.log('HUIII')
-                        generateArrayOfColoredBlocks()
-                        generateHtml()
-                    }
-            
-                    function generateArrayOfColoredBlocks() {
-                        const values = [...Array(4)].map((_, i) => i);
-                        const result = [...Array(4)].map(() => values.splice(Math.floor(Math.random() * values.length), 1)[0])
-                        arrayOfColoredBlocks.splice(0)
-                        while (blockWrapper.firstChild) {
-                            blockWrapper.removeChild(blockWrapper.firstChild);
-                          }
-                        for(i = 0; i < 4; i++) {
-                            arrayOfColoredBlocks.push(combine[result[i]]);
-                        }
-            
-                        const val = [...Array(4)].map((_, i) => i);
-                        const randdd = [...Array(2)].map(() => val.splice(Math.floor(Math.random() * val.length), 1)[0]);
-                        const bad = {
-                            "color": combine[randdd[0]].color,
-                            "text": combine[randdd[1]].text,
-                            "status": "bad"
-                        }
-                        const rrrr = Math.floor(Math.random() * 4);
-                        arrayOfColoredBlocks[rrrr] = bad
-                    }
-            
-                    function generateHtml() {
-                        for(i = 0; i < arrayOfColoredBlocks.length; i++) {
-                            const block = document.createElement('div');
-                            block.className = 'block';
-                            block.onclick = () => clickBlock(block.id);
-                            block.style.backgroundColor = arrayOfColoredBlocks[i].color;
-                            block.textContent = arrayOfColoredBlocks[i].text;
-                            block.id = arrayOfColoredBlocks[i].status
-                            blockWrapper.append(block)
-                        }
-                    }
-                    generateArrayOfColoredBlocks()
-                    generateHtml()
+                    const blockWrapper = document.querySelector('.blockWrapper');
+                    const game = new wrongColor(blockWrapper)
+                    // code
             
                 }
                 if(childRoute === 'switching') {
