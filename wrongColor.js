@@ -3,7 +3,6 @@ export class wrongColor {
         this.blockWrapper = blockWrapper;
         this.arrayOfColoredBlocks = [];
 
-
         this.init();
     }
     init() {
