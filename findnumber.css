@@ -1,0 +1,13 @@
+.container {
+    text-align: center;
+}
+
+.arrow {
+    font-size: 100px;
+    margin-bottom: 20px;
+}
+
+#score {
+    font-size: 24px;
+    margin-top: 20px;
+}

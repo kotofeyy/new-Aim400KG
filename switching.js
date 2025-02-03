@@ -1,4 +1,3 @@
-
 export class SwitchingGame {
     constructor(left, right, question, switchWrapper, btNo, btYes) {
         this.btNo = btNo;

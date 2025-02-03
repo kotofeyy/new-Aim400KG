@@ -1,4 +1,4 @@
-export class wrongColor {
+export class WrongColor {
     constructor(blockWrapper){
         this.blockWrapper = blockWrapper;
         this.arrayOfColoredBlocks = [];

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="SWITCHING.css" />
     <link rel="stylesheet" href="wrongColor.css" />
     <link rel="stylesheet" href="2 version.css" />
+    <link rel="stylesheet" href="findnumber.css" />
     <script src="app.js" type="module"></script>
     <script src="routing.js"></script>
     <script src="functions.js"></script>
@@ -20,12 +21,12 @@
         <h1>Выберите игру</h1>
         <ul>
             <li><button class="menu-bt" onclick="navigateTo('games/aim')">AIM 400KG</button></li>
-            <li><button class="menu-bt" onclick="navigateTo('games/memory')">Игра на запоминание</button></li>
-            <li><button class="menu-bt" onclick="navigateTo('games/wrongColor')">Ложный цвет</button></li>
+            <li><button class="menu-bt" onclick="navigateTo('games/memory')">Игра на запоминание(OLD)</button></li>
+            <li><button class="menu-bt" onclick="navigateTo('games/wrongcolor')">Ложный цвет</button></li>
             <li><button class="menu-bt" onclick="navigateTo('games/switching')">Правильный вопрос</button></li>
-            <li><button class="menu-bt" onclick="navigateTo('games/aim')">Простые переключения</button></li>
-            <li><button class="menu-bt" onclick="navigateTo('games/aim')">Найди число</button></li>
-            <li><button class="menu-bt" onclick="navigateTo('games/v2')">v2</button></li>
+            <li><button class="menu-bt" onclick="navigateTo('games/arrows')">Стрелочки</button></li>
+            <li><button class="menu-bt" onclick="navigateTo('games/dofindnumber')">Найди число</button></li>
+            <li><button class="menu-bt" onclick="navigateTo('games/v2')">Игра на запоминание(NEW)</button></li>
         </ul>
     </section>
 
@@ -59,7 +60,7 @@
                 </div>
             </div>
         </section>
-        <section id="wrongColor" class="route">
+        <section id="wrongcolor" class="route">
             <div class="uWrapper">
                 <div>Укажи обманный блок</div>
                 <div class="blockWrapper">
@@ -90,6 +91,12 @@
                 <button id="checkButton" disabled>Проверить</button>
                 <button id="restartButton" style="display: none;">Начать заново</button>
                 <div id="message"></div>
+            </div>
+        </section>
+        <section id="arrows" class="route">
+            <div class="container">
+                <div id="arrow" class="arrow"></div>
+                <div id="score">Счёт: 0</div>
             </div>
         </section>
 

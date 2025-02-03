@@ -1,6 +1,7 @@
+import { Arrows } from "./Arrows";
 import { SwitchingGame } from "./switching";
 import { v2Memory } from "./v2";
-import { wrongColor } from "./wrongColor";
+import { WrongColor } from "./wrongColor";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -223,9 +224,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     spawnCircle();
                     document.querySelector('.demo').appendChild(circle);
                 }
-                if(childRoute === 'wrongColor') {
+                if(childRoute === 'wrongcolor') {
                     const blockWrapper = document.querySelector('.blockWrapper');
-                    const game = new wrongColor(blockWrapper)
+                    const game = new WrongColor(blockWrapper)
                     // code
             
                 }
@@ -250,6 +251,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Создаем экземпляр игры
                     const game = new v2Memory(grid, rememberButton, checkButton, restartButton, message);
                   // code
+                }
+                if(childRoute === 'arrows') {
+                    const arrowElement = document.getElementById('arrow');
+                    const scoreElement = document.getElementById('score');
+
+                    const game = new Arrows(arrowElement, scoreElement);
+                    // code
                 }
             }
         }
